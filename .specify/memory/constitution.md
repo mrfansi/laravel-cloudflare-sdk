@@ -1,6 +1,6 @@
 <!--
 SYNC IMPACT REPORT
-Version: 1.0.0 -> 1.1.0
+Version: 1.1.0 -> 1.2.0
 Overview: Initial ratification of project constitution.
 Principles:
 - Added: Modularity & Service Isolation
@@ -8,6 +8,7 @@ Principles:
 - Added: Laravel Idiomatic & Readable
 - Added: Testing & Type Safety
 - Added: Consistency & Standardization
+- Refined: Enforced SOLID Principles Pattern
 Templates Update:
 - ✅ plan-template.md (Generic "Constitution Check" compatible)
 - ✅ spec-template.md (Compatible)
@@ -20,24 +21,25 @@ Templates Update:
 
 ## Core Principles
 
-### I. Modularity & Service Isolation
+### I. Modularity & Service Isolation (SOLID: SRP, DIP)
 
 <!-- Example: I. Library-First -->
 
-Every Cloudflare API feature (e.g., DNS, Zones, Firewall) MUST be implemented as a standalone, self-contained service module.
+Every Cloudflare API feature (e.g., DNS, Zones, Firewall) MUST be implemented as a standalone, self-contained service module following Single Responsibility and Dependency Inversion.
 
--   **No God Classes**: Do not add all methods to the main SDK class.
+-   **Single Responsibility (SRP)**: Each service manages exactly one feature set. No God Classes.
 -   **Directory Structure**: Organize services clearly (e.g., `src/Services/DNS/DNSRecordService.php`).
--   **Dependency Injection**: Services receive their dependencies (like the HTTP client) via construction, not global state.
+-   **Dependency Inversion (DIP)**: Services receive their dependencies (like the HTTP client) via interfaces/construction, not concrete global state.
 
-### II. Scalability via Contracts
+### II. Scalability via Contracts (SOLID: OCP, LSP, ISP)
 
 <!-- Example: II. CLI Interface -->
 
-The architecture MUST support adding new Cloudflare endpoints without modifying existing core logic.
+The architecture MUST support adding new Cloudflare endpoints without modifying existing core logic, adhering to Open/Closed, Liskov Substitution, and Interface Segregation.
 
--   **Interfaces**: Define contracts for services where strict polymorphism is beneficial.
--   **Extensible**: Adding a new API group should only strictly require adding a new Service class and binding it.
+-   **Open/Closed (OCP)**: Adding a new API group strictly requires adding a new Service class, not modifying the client core.
+-   **Interface Segregation (ISP)**: Define focused interfaces for services. Clients shouldn't depend on methods they don't use.
+-   **Liskov Substitution (LSP)**: Service implementations must be interchangeable if implementing a common interface.
 -   **Future Proof**: Design with the assumption that Cloudflare will add more endpoints.
 
 ### III. Laravel Idiomatic & Readable
@@ -82,6 +84,6 @@ This Constitution governs the development of the Laravel Cloudflare SDK. It ensu
 -   **Compliance**: Code Reviewers MUST reject PRs that violate Modularity or Readability principles.
 -   **Verification**: New features must include proof of modular implementation (e.g., new Service class) and corresponding Tests.
 
-**Version**: 1.1.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
+**Version**: 1.2.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
 
 <!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
