@@ -3,8 +3,8 @@
 namespace Mrfansi\LaravelCloudflareSdk\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use Mrfansi\LaravelCloudflareSdk\LaravelCloudflareSdkServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {

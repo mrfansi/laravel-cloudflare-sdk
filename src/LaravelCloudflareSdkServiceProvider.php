@@ -2,9 +2,9 @@
 
 namespace Mrfansi\LaravelCloudflareSdk;
 
+use Mrfansi\LaravelCloudflareSdk\Commands\LaravelCloudflareSdkCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mrfansi\LaravelCloudflareSdk\Commands\LaravelCloudflareSdkCommand;
 
 class LaravelCloudflareSdkServiceProvider extends PackageServiceProvider
 {
