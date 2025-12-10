@@ -1,50 +1,76 @@
-# [PROJECT_NAME] Constitution
+<!--
+SYNC IMPACT REPORT
+Version: 0.0.0 -> 1.0.0
+Overview: Initial ratification of project constitution.
+Principles:
+- Added: Modularity & Service Isolation
+- Added: Scalability via Contracts
+- Added: Laravel Idiomatic & Readable
+- Added: Testing & Type Safety
+Templates Update:
+- ✅ plan-template.md (Generic "Constitution Check" compatible)
+- ✅ spec-template.md (Compatible)
+- ✅ tasks-template.md (Compatible)
+-->
+
+# Laravel Cloudflare SDK Constitution
+
 <!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
+### I. Modularity & Service Isolation
+
 <!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
 
-### [PRINCIPLE_2_NAME]
+Every Cloudflare API feature (e.g., DNS, Zones, Firewall) MUST be implemented as a standalone, self-contained service module.
+
+-   **No God Classes**: Do not add all methods to the main SDK class.
+-   **Directory Structure**: Organize services clearly (e.g., `src/Services/DNS/DNSRecordService.php`).
+-   **Dependency Injection**: Services receive their dependencies (like the HTTP client) via construction, not global state.
+
+### II. Scalability via Contracts
+
 <!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
 
-### [PRINCIPLE_3_NAME]
+The architecture MUST support adding new Cloudflare endpoints without modifying existing core logic.
+
+-   **Interfaces**: Define contracts for services where strict polymorphism is beneficial.
+-   **Extensible**: Adding a new API group should only strictly require adding a new Service class and binding it.
+-   **Future Proof**: Design with the assumption that Cloudflare will add more endpoints.
+
+### III. Laravel Idiomatic & Readable
+
 <!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
 
-### [PRINCIPLE_4_NAME]
+The SDK MUST feel native to Laravel developers.
+
+-   **Facades**: Provide Facades for easy access (e.g., `Cloudflare::dns()->list()`).
+-   **Fluent/Collections**: Return Laravel Collections instead of raw arrays where lists are involved.
+-   **Naming**: Use verbose, clear method names (`createZone` vs `add`).
+-   **Config**: Use `config/cloudflare.php` for all static configuration.
+
+### IV. Testing & Type Safety (NON-NEGOTIABLE)
+
 <!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+Code quality is enforced via strict testing and static analysis.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+-   **Pest Framework**: All tests MUST be written using Pest PHP.
+-   **100% Coverage**: Aim for high test coverage; critical paths must be covered.
+-   **Larastan/PHPStan**: Code must pass `max` level static analysis.
+-   **Arch Tests**: Use Pest Architecture tests to enforce the modular structure (e.g., "Services must not depend on Controllers").
 
 ## Governance
+
 <!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This Constitution governs the development of the Laravel Cloudflare SDK. It ensures that as the feature set grows, the package remains maintainable and developer-friendly.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
+-   **Amendments**: Changes to principles require a Pull Request updating this file and a version bump.
+-   **Compliance**: Code Reviewers MUST reject PRs that violate Modularity or Readability principles.
+-   **Verification**: New features must include proof of modular implementation (e.g., new Service class) and corresponding Tests.
+
+**Version**: 1.0.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
+
 <!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
