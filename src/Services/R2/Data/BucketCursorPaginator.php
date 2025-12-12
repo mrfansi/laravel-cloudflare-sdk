@@ -18,10 +18,6 @@ class BucketCursorPaginator
         private readonly ?callable $fetcher = null,
     ) {}
 
-    public function items(): Collection
-    {
-        return $this->items;
-    }
 
     /**
      * Fetch the next page of results, or null if there is no next page or fetcher is not set.
