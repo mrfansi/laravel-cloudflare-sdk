@@ -14,12 +14,13 @@ class R2BucketService
         protected PendingRequest $client,
     ) {}
 
-    public function list(?string $cursor = null, ?string $prefix = null, ?string $startAfter = null): BucketCursorPaginator
+    public function list(?string $cursor = null, ?string $nameContains = null, ?string $startAfter = null, ?int $limit = null): BucketCursorPaginator
     {
         $response = $this->client->get('buckets', array_filter([
             'cursor' => $cursor,
-            'prefix' => $prefix,
+            'name_contains' => $nameContains,
             'start_after' => $startAfter,
+            'per_page' => $limit,
         ]));
 
         $response->throw();

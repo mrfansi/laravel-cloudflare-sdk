@@ -17,7 +17,7 @@ class LaravelCloudflareSdkServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-cloudflare-sdk')
-            ->hasConfigFile('cloudflare')
+            ->hasConfigFile('cloudflare-sdk')
             ->hasViews()
             ->hasMigration('create_laravel_cloudflare_sdk_table')
             ->hasCommand(LaravelCloudflareSdkCommand::class);

@@ -10,8 +10,8 @@ beforeEach(function () {
     }
 
     // Ensure we are using the real config from env
-    config(['cloudflare.account_id' => env('CLOUDFLARE_ACCOUNT_ID')]);
-    config(['cloudflare.api_token' => env('CLOUDFLARE_API_TOKEN')]);
+    config(['cloudflare-sdk.account_id' => env('CLOUDFLARE_ACCOUNT_ID')]);
+    config(['cloudflare-sdk.api_token' => env('CLOUDFLARE_API_TOKEN')]);
 
     // Disable mocking
     Http::preventStrayRequests(false);
@@ -25,7 +25,12 @@ it('can perform real bucket operations', function () {
     expect($bucket)->toBeInstanceOf(Bucket::class)
         ->and($bucket->name)->toBe($bucketName);
 
-    // 2. List (verify existence)
+    // 2. Get
+    $fetchedBucket = Cloudflare::r2()->buckets()->get($bucketName);
+    expect($fetchedBucket)->toBeInstanceOf(Bucket::class)
+        ->and($fetchedBucket->name)->toBe($bucketName);
+
+    // 3. List (verify existence)
     $paginator = Cloudflare::r2()->buckets()->list();
     $found = collect($paginator->items)->contains(fn (Bucket $b) => $b->name === $bucketName);
     expect($found)->toBeTrue();

@@ -17,22 +17,22 @@ class LifecycleRule
     public static function fromArray(array $data): self
     {
         return new self(
-            id: $data['ID'] ?? null,
-            status: $data['Status'],
-            prefix: $data['Prefix'] ?? null,
-            expiration: $data['Expiration'] ?? null,
-            abortMultipartUpload: $data['AbortIncompleteMultipartUpload'] ?? null,
+            id: $data['id'] ?? null,
+            status: $data['status'],
+            prefix: $data['prefix'] ?? null,
+            expiration: $data['expiration'] ?? null,
+            abortMultipartUpload: $data['abort_incomplete_multipart_upload'] ?? null,
         );
     }
 
     public function toArray(): array
     {
         return array_filter([
-            'ID' => $this->id,
-            'Status' => $this->status,
-            'Prefix' => $this->prefix,
-            'Expiration' => $this->expiration,
-            'AbortIncompleteMultipartUpload' => $this->abortMultipartUpload,
+            'id' => $this->id,
+            'status' => $this->status,
+            'prefix' => $this->prefix,
+            'expiration' => $this->expiration,
+            'abort_incomplete_multipart_upload' => $this->abortMultipartUpload,
         ], fn ($v) => ! is_null($v));
     }
 }

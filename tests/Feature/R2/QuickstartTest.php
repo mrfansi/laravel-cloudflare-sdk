@@ -5,8 +5,8 @@ use Mrfansi\LaravelCloudflareSdk\Facades\Cloudflare;
 use Mrfansi\LaravelCloudflareSdk\Services\R2\Data\CorsPolicy;
 
 beforeEach(function () {
-    config(['cloudflare.account_id' => 'test-account']);
-    config(['cloudflare.api_token' => 'test-token']);
+    config(['cloudflare-sdk.account_id' => 'test-account']);
+    config(['cloudflare-sdk.api_token' => 'test-token']);
 });
 
 it('runs quickstart scenarios', function () {
