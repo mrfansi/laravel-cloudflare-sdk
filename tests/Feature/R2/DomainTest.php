@@ -17,9 +17,9 @@ it('can list domains', function () {
                     [
                         'domain' => 'cdn.example.com',
                         'enabled' => true,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]),
     ]);
 
