@@ -1,12 +1,11 @@
 <?php
 
 use Mrfansi\LaravelCloudflareSdk\Facades\LaravelCloudflareSdk;
-use Mrfansi\LaravelCloudflareSdk\Services\R2\Data\Bucket;
 
 test('can paginate buckets', function () {
     $r2 = LaravelCloudflareSdk::r2();
-    $prefix = 'sdk-test-pagination-' . bin2hex(random_bytes(4));
-    
+    $prefix = 'sdk-test-pagination-'.bin2hex(random_bytes(4));
+
     // Create 3 buckets
     $buckets = [
         "{$prefix}-1",
@@ -22,7 +21,7 @@ test('can paginate buckets', function () {
         // List first page (limit 2)
         // Note: We use nameContains to filter only our test buckets
         $page1 = $r2->buckets()->list(nameContains: $prefix, limit: 2);
-        
+
         expect($page1->items)->toHaveCount(2)
             ->and($page1->nextCursor)->not->toBeNull();
 
