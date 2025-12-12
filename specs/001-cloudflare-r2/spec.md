@@ -10,7 +10,7 @@
 ### Session 2025-12-10
 
 -   Q: How should the SDK handle listing when a user has many buckets? → A: **Return a Paginator/Cursor Object** - Returns an object allowing iteration or fetching next pages (e.g. `next()` method).
--   Q: How should the SDK handle location placement for new buckets? → A: **Optional Parameter** - `create([...])` accepts an optional `location` key. Defaults to 'auto' if omitted.
+-   Q: How should the SDK handle location placement for new buckets? → A: **Optional Parameter** - `create(string $name, ?string $locationHint = null)` accepts an optional location hint as the second parameter. Defaults to 'auto' if omitted.
 -   Q: Should domain management be a method on the Bucket service? → A: **Nested Accessor** - `Cloudflare::r2()->buckets()->domains($bucketName)->list()` keeps the API hierarchy intuitive.
 
 ## User Scenarios & Testing _(mandatory)_
