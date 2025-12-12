@@ -33,6 +33,6 @@ class LifecycleRule
             'Prefix' => $this->prefix,
             'Expiration' => $this->expiration,
             'AbortIncompleteMultipartUpload' => $this->abortMultipartUpload,
-        ], fn($v) => !is_null($v));
+        ], fn ($v) => ! is_null($v));
     }
 }

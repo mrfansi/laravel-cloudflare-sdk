@@ -7,11 +7,10 @@ namespace Mrfansi\LaravelCloudflareSdk\Services\R2\Data;
 class CorsPolicy
 {
     /**
-     * @param array<string> $allowedOrigins
-     * @param array<string> $allowedMethods
-     * @param array<string>|null $allowedHeaders
-     * @param int|null $maxAgeSeconds
-     * @param array<string>|null $exposeHeaders
+     * @param  array<string>  $allowedOrigins
+     * @param  array<string>  $allowedMethods
+     * @param  array<string>|null  $allowedHeaders
+     * @param  array<string>|null  $exposeHeaders
      */
     public function __construct(
         public readonly array $allowedOrigins,
@@ -40,6 +39,6 @@ class CorsPolicy
             'AllowedHeaders' => $this->allowedHeaders,
             'MaxAgeSeconds' => $this->maxAgeSeconds,
             'ExposeHeaders' => $this->exposeHeaders,
-        ], fn($v) => !is_null($v));
+        ], fn ($v) => ! is_null($v));
     }
 }

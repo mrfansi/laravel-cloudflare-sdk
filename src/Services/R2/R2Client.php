@@ -17,7 +17,7 @@ class R2Client
     protected function makeRequest(): PendingRequest
     {
         return Http::withHeaders([
-            'Authorization' => 'Bearer ' . $this->apiToken,
+            'Authorization' => 'Bearer '.$this->apiToken,
         ])->baseUrl("https://api.cloudflare.com/client/v4/accounts/{$this->accountId}/r2");
     }
 

@@ -33,7 +33,7 @@ class R2LifecycleService
     }
 
     /**
-     * @param array<LifecycleRule> $rules
+     * @param  array<LifecycleRule>  $rules
      */
     public function update(array $rules): void
     {

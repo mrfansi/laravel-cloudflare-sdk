@@ -15,7 +15,7 @@ it('can get cors policy', function () {
             'result' => [
                 'AllowedOrigins' => ['*'],
                 'AllowedMethods' => ['GET'],
-            ]
+            ],
         ]),
     ]);
 

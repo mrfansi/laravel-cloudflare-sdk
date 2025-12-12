@@ -9,8 +9,7 @@ use Illuminate\Support\Collection;
 class BucketCursorPaginator
 {
     /**
-     * @param Collection<int, Bucket> $items
-     * @param string|null $nextCursor
+     * @param  Collection<int, Bucket>  $items
      */
     public function __construct(
         public readonly Collection $items,
