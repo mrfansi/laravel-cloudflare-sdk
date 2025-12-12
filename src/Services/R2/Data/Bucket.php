@@ -17,9 +17,9 @@ class Bucket
     public static function fromArray(array $data): self
     {
         return new self(
-            name: $data['Name'],
-            creationDate: new DateTimeImmutable($data['CreationDate']),
-            location: $data['LocationConstraint'] ?? null,
+            name: $data['name'],
+            creationDate: new DateTimeImmutable($data['creation_date']),
+            location: $data['location'] ?? null,
         );
     }
 }

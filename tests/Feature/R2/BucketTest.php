@@ -16,8 +16,8 @@ it('can list buckets', function () {
             'result' => [
                 'buckets' => [
                     [
-                        'Name' => 'test-bucket',
-                        'CreationDate' => '2023-01-01T00:00:00Z',
+                        'name' => 'test-bucket',
+                        'creation_date' => '2023-01-01T00:00:00Z',
                     ],
                 ],
             ],
@@ -38,8 +38,8 @@ it('can create a bucket', function () {
     Http::fake([
         'api.cloudflare.com/client/v4/accounts/test-account/r2/buckets' => Http::response([
             'result' => [
-                'Name' => 'new-bucket',
-                'CreationDate' => '2023-01-01T00:00:00Z',
+                'name' => 'new-bucket',
+                'creation_date' => '2023-01-01T00:00:00Z',
             ],
         ]),
     ]);
@@ -54,8 +54,8 @@ it('can get a bucket', function () {
     Http::fake([
         'api.cloudflare.com/client/v4/accounts/test-account/r2/buckets/my-bucket' => Http::response([
             'result' => [
-                'Name' => 'my-bucket',
-                'CreationDate' => '2023-01-01T00:00:00Z',
+                'name' => 'my-bucket',
+                'creation_date' => '2023-01-01T00:00:00Z',
             ],
         ]),
     ]);

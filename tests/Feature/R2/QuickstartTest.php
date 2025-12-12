@@ -18,8 +18,8 @@ it('runs quickstart scenarios', function () {
             return Http::response([
                 'result' => [
                     'buckets' => [
-                        ['Name' => 'bucket-1', 'CreationDate' => '2023-01-01T00:00:00Z'],
-                        ['Name' => 'bucket-2', 'CreationDate' => '2023-01-01T00:00:00Z'],
+                        ['name' => 'bucket-1', 'creation_date' => '2023-01-01T00:00:00Z'],
+                        ['name' => 'bucket-2', 'creation_date' => '2023-01-01T00:00:00Z'],
                     ],
                 ],
                 'result_info' => ['cursor' => null],
@@ -28,7 +28,7 @@ it('runs quickstart scenarios', function () {
 
         if ($url === 'https://api.cloudflare.com/client/v4/accounts/test-account/r2/buckets' && $method === 'POST') {
             return Http::response([
-                'result' => ['Name' => 'my-app-assets', 'CreationDate' => '2023-01-01T00:00:00Z'],
+                'result' => ['name' => 'my-app-assets', 'creation_date' => '2023-01-01T00:00:00Z'],
             ]);
         }
 
