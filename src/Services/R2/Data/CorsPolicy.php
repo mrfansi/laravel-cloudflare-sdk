@@ -33,12 +33,25 @@ class CorsPolicy
 
     public function toArray(): array
     {
-        return array_filter([
+        // Required fields are always included
+        $data = [
             'AllowedOrigins' => $this->allowedOrigins,
             'AllowedMethods' => $this->allowedMethods,
-            'AllowedHeaders' => $this->allowedHeaders,
-            'MaxAgeSeconds' => $this->maxAgeSeconds,
-            'ExposeHeaders' => $this->exposeHeaders,
-        ], fn ($v) => ! is_null($v));
+        ];
+
+        // Optional fields are only included if non-null
+        if ($this->allowedHeaders !== null) {
+            $data['AllowedHeaders'] = $this->allowedHeaders;
+        }
+
+        if ($this->maxAgeSeconds !== null) {
+            $data['MaxAgeSeconds'] = $this->maxAgeSeconds;
+        }
+
+        if ($this->exposeHeaders !== null) {
+            $data['ExposeHeaders'] = $this->exposeHeaders;
+        }
+
+        return $data;
     }
 }
