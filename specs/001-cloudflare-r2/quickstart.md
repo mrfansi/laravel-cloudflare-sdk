@@ -41,12 +41,17 @@ Cloudflare::r2()->buckets()
 
 ## Error Handling
 
-All methods throw `Mrfansi\LaravelCloudflareSdk\Exceptions\CloudflareSdkException` on failure.
+All methods throw `Illuminate\Http\Client\RequestException` on failure.
 
 ```php
+use Illuminate\Http\Client\RequestException;
+
 try {
     Cloudflare::r2()->buckets()->get('non-existent');
-} catch (BucketNotFoundException $e) {
-    // Handle 404
+} catch (RequestException $e) {
+    // Handle error, e.g. check for 404:
+    if ($e->response->status() === 404) {
+        // Handle not found
+    }
 }
 ```
