@@ -1,16 +1,11 @@
 <!--
 SYNC IMPACT REPORT
-Version: 1.1.0 -> 1.2.0
-Overview: Initial ratification of project constitution.
+Version: 1.3.0 -> 1.4.0
+Overview: Added Integration Testing requirement.
 Principles:
-- Added: Modularity & Service Isolation
-- Added: Scalability via Contracts
-- Added: Laravel Idiomatic & Readable
-- Added: Testing & Type Safety
-- Added: Consistency & Standardization
-- Refined: Enforced SOLID Principles Pattern
+- Refined: IV. Testing & Type Safety (Added Integration Tests)
 Templates Update:
-- ✅ plan-template.md (Generic "Constitution Check" compatible)
+- ✅ plan-template.md (Compatible)
 - ✅ spec-template.md (Compatible)
 - ✅ tasks-template.md (Compatible)
 -->
@@ -61,7 +56,9 @@ Code quality is enforced via strict testing and static analysis.
 
 -   **Pest Framework**: All tests MUST be written using Pest PHP.
 -   **100% Coverage**: Aim for high test coverage; critical paths must be covered.
--   **Larastan/PHPStan**: Code must pass `max` level static analysis.
+-   **Larastan/PHPStan**: Code must pass at least `level 5` static analysis (aiming for `max`).
+-   **Strict Types**: All PHP files MUST declare `strict_types=1`.
+-   **Integration Tests**: Critical paths MUST be verified against live APIs using Integration Tests (e.g., `Tests\Integration\R2LiveTest`). These tests should be skippable if credentials are missing.
 -   **Arch Tests**: Use Pest Architecture tests to enforce the modular structure (e.g., "Services must not depend on Controllers").
 
 ### V. Consistency & Standardization
@@ -84,6 +81,6 @@ This Constitution governs the development of the Laravel Cloudflare SDK. It ensu
 -   **Compliance**: Code Reviewers MUST reject PRs that violate Modularity or Readability principles.
 -   **Verification**: New features must include proof of modular implementation (e.g., new Service class) and corresponding Tests.
 
-**Version**: 1.2.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10
+**Version**: 1.4.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-12
 
 <!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->

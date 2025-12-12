@@ -40,13 +40,41 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'account_id' => env('CLOUDFLARE_ACCOUNT_ID'),
+    'api_token' => env('CLOUDFLARE_API_TOKEN'),
 ];
 ```
 
-Optionally, you can publish the views using
+## Usage
+
+### Cloudflare R2
+
+```php
+use Mrfansi\LaravelCloudflareSdk\Facades\Cloudflare;
+
+// List buckets
+$buckets = Cloudflare::r2()->buckets()->list();
+
+// Create a bucket
+$bucket = Cloudflare::r2()->buckets()->create('my-bucket', 'wnam');
+
+// Get a bucket
+$bucket = Cloudflare::r2()->buckets()->get('my-bucket');
+
+// Delete a bucket
+Cloudflare::r2()->buckets()->delete('my-bucket');
+```
+
+## Testing
 
 ```bash
-php artisan vendor:publish --tag="laravel-cloudflare-sdk-views"
+composer test
+```
+
+To run live integration tests against the Cloudflare API, set the `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` environment variables and run:
+
+```bash
+./vendor/bin/pest --group=live
 ```
 
 ## Usage
@@ -76,8 +104,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Muhammad Irfan](https://github.com/mrfansi)
-- [All Contributors](../../contributors)
+-   [Muhammad Irfan](https://github.com/mrfansi)
+-   [All Contributors](../../contributors)
 
 ## License
 
