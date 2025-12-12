@@ -15,10 +15,7 @@ foreach ($paginator->items() as $bucket) {
 }
 
 // Create a bucket in Western North America
-$bucket = Cloudflare::r2()->buckets()->create([
-    'name' => 'my-app-assets',
-    'location' => 'wnam'
-]);
+$bucket = Cloudflare::r2()->buckets()->create('my-app-assets', 'wnam');
 
 // Delete
 Cloudflare::r2()->buckets()->delete('my-app-assets');
