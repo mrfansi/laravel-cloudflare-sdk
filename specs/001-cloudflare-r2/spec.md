@@ -26,7 +26,7 @@ As a developer, I want to create, list, and manage R2 buckets programmatically s
 **Acceptance Scenarios**:
 
 1. **Given** valid credentials, **When** I call `Cloudflare::r2()->buckets()->list()`, **Then** I receive a `CursorPaginator` object containing a collection of buckets and a cursor for the next page.
-2. **Given** a unique bucket name, **When** I call `create(['name' => 'unique-bucket', 'location' => 'wnam'])`, **Then** the bucket is created in that region.
+2. **Given** a unique bucket name, **When** I call `create('unique-bucket', 'wnam')`, **Then** the bucket is created in that region.
 3. **Given** an existing bucket, **When** I call `delete('bucket-name')`, **Then** the bucket is removed.
 
 ---
