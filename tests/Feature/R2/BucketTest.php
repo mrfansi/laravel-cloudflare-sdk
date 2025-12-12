@@ -6,8 +6,8 @@ use Mrfansi\LaravelCloudflareSdk\Services\R2\Data\Bucket;
 use Mrfansi\LaravelCloudflareSdk\Services\R2\Data\BucketCursorPaginator;
 
 beforeEach(function () {
-    config(['cloudflare-sdk.account_id' => 'test-account']);
-    config(['cloudflare-sdk.api_token' => 'test-token']);
+    config(['cloudflare.account_id' => 'test-account']);
+    config(['cloudflare.api_token' => 'test-token']);
 });
 
 it('can list buckets', function () {

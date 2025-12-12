@@ -13,4 +13,4 @@ parameters:
     ignoreErrors:
         -
             identifier: larastan.noEnvCallsOutsideOfConfig
-            path: config/cloudflare-sdk.php
+            path: config/cloudflare.php

@@ -5,8 +5,8 @@ use Mrfansi\LaravelCloudflareSdk\Facades\Cloudflare;
 use Mrfansi\LaravelCloudflareSdk\Services\R2\Data\Domain;
 
 beforeEach(function () {
-    config(['cloudflare-sdk.account_id' => 'test-account']);
-    config(['cloudflare-sdk.api_token' => 'test-token']);
+    config(['cloudflare.account_id' => 'test-account']);
+    config(['cloudflare.api_token' => 'test-token']);
 });
 
 it('can list domains', function () {

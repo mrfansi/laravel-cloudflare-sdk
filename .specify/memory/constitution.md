@@ -47,7 +47,7 @@ The SDK MUST feel native to Laravel developers.
 -   **Facades**: Provide Facades for easy access (e.g., `Cloudflare::dns()->list()`).
 -   **Fluent/Collections**: Return Laravel Collections instead of raw arrays where lists are involved.
 -   **Naming**: Use verbose, clear method names (`createZone` vs `add`).
--   **Config**: Use `config/cloudflare-sdk.php` for all static configuration.
+-   **Config**: Use `config/cloudflare.php` for all static configuration.
 
 ### IV. Testing & Type Safety (NON-NEGOTIABLE)
 
