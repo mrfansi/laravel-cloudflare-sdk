@@ -24,11 +24,15 @@ Cloudflare::r2()->buckets()->delete('my-app-assets');
 ## CORS & Domains
 
 ```php
+use Mrfansi\LaravelCloudflareSdk\R2\CorsPolicy;
+
 // Enable CORS for web apps
-Cloudflare::r2()->buckets()->updateCors('my-app-assets', [
-    'allowed_origins' => ['https://myapp.com'],
-    'allowed_methods' => ['GET', 'PUT'],
-]);
+Cloudflare::r2()->buckets()
+    ->cors('my-app-assets')
+    ->update(new CorsPolicy([
+        'allowed_origins' => ['https://myapp.com'],
+        'allowed_methods' => ['GET', 'PUT'],
+    ]));
 
 // Connect a custom domain
 Cloudflare::r2()->buckets()
